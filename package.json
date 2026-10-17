@@ -1,0 +1,22 @@
+{
+  "name": "pertemuan-9",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test --timeout 20000",
+     "report-mochawesome": "mocha test --timeout 20000 --reporter mochawesome",
+     "report-simple-html": "mocha test --timeout 20000 --reporter mocha-simple-html-reporter --reporter-options output=report.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "selenium-webdriver": "^4.51.0"
+  },
+  "devDependencies": {
+    "mocha": "^12.0.3",
+    "mocha-simple-html-reporter": "^2.0.0",
+    "mochawesome": "^8.1.1"
+  }
+}

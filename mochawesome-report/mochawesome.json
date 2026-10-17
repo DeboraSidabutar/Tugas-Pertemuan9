@@ -1,0 +1,253 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-10-17T14:35:25.706Z",
+    "end": "2026-10-17T14:36:07.877Z",
+    "duration": 42171,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "39fb7d9f-b3a8-425c-851d-b40836f4b7d8",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b26bc105-2eaa-4c51-8b88-f2cb2d94174c",
+          "title": "Tugas Pertemuan 9 - Login",
+          "fullFile": "C:\\Users\\ASUS\\Documents\\BOOTCAMP\\TUGAS\\PERTEMUAN 9\\test\\1-login.js",
+          "file": "\\test\\1-login.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Tugas Pertemuan 9 - Login\"",
+              "fullTitle": "Tugas Pertemuan 9 - Login \"before each\" hook in \"Tugas Pertemuan 9 - Login\"",
+              "timedOut": false,
+              "duration": 3931,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();\nawait driver.get(BASE_URL);",
+              "err": {},
+              "uuid": "498a4d6e-509d-4240-bba2-adc25e9bb427",
+              "parentUUID": "b26bc105-2eaa-4c51-8b88-f2cb2d94174c",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Tugas Pertemuan 9 - Login\"",
+              "fullTitle": "Tugas Pertemuan 9 - Login \"after each\" hook in \"Tugas Pertemuan 9 - Login\"",
+              "timedOut": false,
+              "duration": 3686,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.sleep(PAUSE_MS);\nawait driver.quit();",
+              "err": {},
+              "uuid": "23553de8-f3a5-4f54-9e7f-1520d6634deb",
+              "parentUUID": "b26bc105-2eaa-4c51-8b88-f2cb2d94174c",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Login - data valid",
+              "fullTitle": "Tugas Pertemuan 9 - Login Login - data valid",
+              "timedOut": false,
+              "duration": 1236,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.findElement(USERNAME_INPUT).sendKeys(\"admin\");\nawait driver.findElement(PASSWORD_INPUT).sendKeys(\"admin\");\nawait driver.findElement(LOGIN_BUTTON).click();\nawait driver.wait(until.urlContains(\"/users\"), 60000);\nconst currentUrl = await driver.getCurrentUrl();\n// Assert 1: URL pindah ke halaman users\nassert.ok(currentUrl.includes(\"/users\"), `URL harus berisi /users, diterima ${currentUrl}`);\nconst heading = await driver.wait(\n  until.elementLocated(By.xpath(\"//*[contains(text(),'List Users')]\")),\n  20000\n);\n// Assert 2: Judul List Users tampil\nassert.equal(await heading.isDisplayed(), true, \"Judul List Users harus tampil\");",
+              "err": {},
+              "uuid": "088757ff-65c7-4655-bb0a-dcc8333c09e7",
+              "parentUUID": "b26bc105-2eaa-4c51-8b88-f2cb2d94174c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Login - password salah",
+              "fullTitle": "Tugas Pertemuan 9 - Login Login - password salah",
+              "timedOut": false,
+              "duration": 995,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.findElement(USERNAME_INPUT).sendKeys(\"admin\");\nawait driver.findElement(PASSWORD_INPUT).sendKeys(\"salah123\");\nawait driver.findElement(LOGIN_BUTTON).click();\nconst errorMessage = await driver.findElement(By.css(\"p.error\"));\nawait driver.wait(async () => (await errorMessage.getText()).length > 0, 10000);\nconst currentUrl = await driver.getCurrentUrl();\n// Assert 1: Tetap di halaman login\nassert.ok(!currentUrl.includes(\"/users\"), \"User tidak boleh masuk ke /users\");\n// Assert 2: Pesan error tampil\nassert.ok((await errorMessage.getText()).length > 0, \"Pesan error harus muncul\");",
+              "err": {},
+              "uuid": "da62294b-a384-42d3-98b7-4c034dc3e379",
+              "parentUUID": "b26bc105-2eaa-4c51-8b88-f2cb2d94174c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "088757ff-65c7-4655-bb0a-dcc8333c09e7",
+            "da62294b-a384-42d3-98b7-4c034dc3e379"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2231,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "3ec52cc2-f5c7-45b9-b9df-ad60528bed01",
+          "title": "Tugas Pertemuan 9 - Add User",
+          "fullFile": "C:\\Users\\ASUS\\Documents\\BOOTCAMP\\TUGAS\\PERTEMUAN 9\\test\\adduser.js",
+          "file": "\\test\\adduser.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Tugas Pertemuan 9 - Add User\"",
+              "fullTitle": "Tugas Pertemuan 9 - Add User \"before each\" hook in \"Tugas Pertemuan 9 - Add User\"",
+              "timedOut": false,
+              "duration": 4524,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();\nawait login(driver);",
+              "err": {},
+              "uuid": "b03db4b6-e747-417a-8b0b-0b4347add170",
+              "parentUUID": "3ec52cc2-f5c7-45b9-b9df-ad60528bed01",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Tugas Pertemuan 9 - Add User\"",
+              "fullTitle": "Tugas Pertemuan 9 - Add User \"after each\" hook in \"Tugas Pertemuan 9 - Add User\"",
+              "timedOut": false,
+              "duration": 3483,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.sleep(PAUSE_MS);\nawait driver.quit();",
+              "err": {},
+              "uuid": "be19560f-b56b-4e87-9d59-f7df062740ec",
+              "parentUUID": "3ec52cc2-f5c7-45b9-b9df-ad60528bed01",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Add User - data valid, user baru ada di list",
+              "fullTitle": "Tugas Pertemuan 9 - Add User Add User - data valid, user baru ada di list",
+              "timedOut": false,
+              "duration": 3520,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const username = `Deb${randomLetters(7)}`;\nconst savedName = await addUser(driver, username, 34);\nawait backToList(driver);\nlet card = await findUserCard(driver, savedName, 8000);\nif (!card) {\n  await driver.navigate().refresh();\n  await driver.wait(until.elementLocated(LIST_TITLE), 20000);\n  card = await findUserCard(driver, savedName, 12000);\n}\nconst nameElements = await driver.findElements(\n  By.xpath(`//*[normalize-space(text())='${savedName}']`)\n);\nif (nameElements.length > 0) {\n  await driver.executeScript(\n    \"arguments[0].scrollIntoView({block: 'center'});\",\n    nameElements[0]\n  );\n}\n// Assert 1: User baru ada di list\nassert.ok(card !== null, `User \"${savedName}\" harus ada di list`);\n// Assert 2: Umur yang tersimpan benar\nassert.ok(card.includes(\"Age: 34\"), `Kartu harus berisi Age: 34, diterima: \"${card}\"`);",
+              "err": {},
+              "uuid": "27495fde-ef51-430e-b529-a2f8827c2562",
+              "parentUUID": "3ec52cc2-f5c7-45b9-b9df-ad60528bed01",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Add User - data kosong tidak ditambahkan",
+              "fullTitle": "Tugas Pertemuan 9 - Add User Add User - data kosong tidak ditambahkan",
+              "timedOut": false,
+              "duration": 2540,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const before = await driver.findElements(By.xpath(\"//*[contains(text(),'ID:')]\"));\nawait addUser(driver, \"\", \"\");\nconst urlAfterSubmit = await driver.getCurrentUrl();\n// Assert 1: Form kosong ditolak, halaman tetap di /add\nassert.ok(urlAfterSubmit.includes(\"/add\"), `Harus tetap di /add, diterima ${urlAfterSubmit}`);\nawait backToList(driver);\nconst after = await driver.findElements(By.xpath(\"//*[contains(text(),'ID:')]\"));\n// Assert 2: Jumlah user di list tidak bertambah\nassert.equal(after.length, before.length, \"User kosong tidak boleh ditambahkan\");",
+              "err": {},
+              "uuid": "04cc8e22-fea8-403a-9b10-e91f8f831dde",
+              "parentUUID": "3ec52cc2-f5c7-45b9-b9df-ad60528bed01",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "27495fde-ef51-430e-b529-a2f8827c2562",
+            "04cc8e22-fea8-403a-9b10-e91f8f831dde"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6060,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 90000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 20000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "12.0.3"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "8.1.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.2"
+    }
+  }
+}
